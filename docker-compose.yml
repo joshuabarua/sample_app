@@ -2,8 +2,8 @@ version: '3'
 services:
   db:
     image: postgres
-    environment: 
-      POSTGRES_USER: 'postgres'
+    environment:
+      POSTGRES_USER: 'admin'
       POSTGRES_PASSWORD: 'password'
     # Exposing DB to port `5432` of host machine
     ports:
@@ -19,8 +19,8 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_HOST: "db"
-      DATABASE_USERNAME: "postgres"
+      DATABASE_HOST: "host.docker.internal"
+      DATABASE_USERNAME: "admin"
       DATABASE_PASSWORD: "password"
       DATABASE_PORT: 5432
     volumes:
@@ -31,3 +31,25 @@ volumes:
   postgres:
   cache:
   bundle:
+
+#remake db to work
+
+#(base) Joshuas-MacBook-Pro:sample_app josh$ docker-compose run web rake db:create
+#Starting sample_app_db_1 ... done
+#Created database 'myapp_development'
+#Created database 'myapp_test'
+#(base) Joshuas-MacBook-Pro:sample_app josh$ docker-compose run --rm web rails db:migrate
+#Starting sample_app_db_1 ... done
+#== 20200329103259 CreateUsers: migrating ======================================
+#-- create_table(:users)
+#   -> 0.0463s
+#== 20200329103259 CreateUsers: migrated (0.0464s) =============================
+
+#(base) Joshuas-MacBook-Pro:sample_app josh$ 
+
+# Add a role to postgres
+#(base) Joshuas-MacBook-Pro:/ josh$ cd /usr/local/Cellar/postgresql/12.2/bin
+#(base) Joshuas-MacBook-Pro:bin josh$ createuser -s admin
+#(base) Joshuas-MacBook-Pro:bin josh$ cd
+#(base) Joshuas-MacBook-Pro:~ josh$ cd /Users/josh/Uni/Sem1-2020/RAD/RAD-master/2020_s1/sample_app
+#(base) Joshuas-MacBook-Pro:sample_app josh$ docker-compose run --rm web rails db:migrate
