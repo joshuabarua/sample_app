@@ -1,4 +1,4 @@
-<% provide(:title, "Home") %>
+<% provide(:title, 'Home') %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,10 +14,10 @@
     sample application. Here I have created a sample app using the tutorials and docker!
   </h2>
 
-  <%= link_to "Sign up now!", 'login_path', class: "btn btn-lg btn-primary" %>
+  <%= link_to "Sign up now!", 'signup_path', class: "btn btn-lg btn-primary" %>
 </div>
 
 <%= link_to image_tag("kitten.jpg", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+            'home_path' %>
   </body>
 </html>
