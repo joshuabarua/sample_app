@@ -6,18 +6,17 @@
   </head>
   <body>
     <div class="center jumbotron">
-  <h1>Welcome to the Josh's App</h1>
+  <h1>Welcome to the Josh's Sample App</h1>
 
   <h2>
-    This is the home page for the
-    <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+    This is the home page for the Ruby on Rails Tutorial
     sample application. Here I have created a sample app using the tutorials and docker!
   </h2>
 
-  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
-<%= link_to image_tag("idk1.jpg", alt: "logo"),
+<%= link_to image_tag("idk1.jpg", alt: "Home logo"),
             home_path %>
   </body>
 </html>

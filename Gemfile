@@ -62,6 +62,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+
   #Error without gem below
 #SiteLayoutTest#test_layout_links:
 #NoMethodError: assert_template has been extracted to a gem. To continue using it,
