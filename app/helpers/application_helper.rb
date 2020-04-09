@@ -4,7 +4,7 @@ module ApplicationHelper
         if page_title.empty?
           base_title
         else
-          "#{base_title} | #{page_title} " #This puts the base title before page title, remember this for testing
+          "#{page_title} | #{base_title}" #This puts the base title before page title, remember this for testing
         end
        end
 end
