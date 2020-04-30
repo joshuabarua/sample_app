@@ -7,9 +7,8 @@ local:
   root: <%= Rails.root.join("storage") %>
 
   #production:
-   # service: Disk
-   # root: <%= Rails.root.join("postgres://khfkzvzywcugvm:66b607cb6d7503478c5eb496bb0e79b9ae9f2c78ccab8dda424f62916d4a8d0d@ec2-18-235-20-228.compute-1.amazonaws.com:5432/daq4u1u6cfa2rb") %>
-
+    # service: Disk
+    
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
