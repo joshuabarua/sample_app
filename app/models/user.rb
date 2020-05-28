@@ -13,10 +13,10 @@ class User < ApplicationRecord
 
     #returns hash digest of the given string
     def self.digest(string)
-      cost = BCrypt::Engine::MIN_COST #https://stackoverflow.com/questions/30963360/undefined-method-min-cost-for-activemodelsecurepasswordmodule
-      #cost = ActiveModel::securePassword.min_cost ? BCrypt::Engine::MIN_COST :
-      #                                              BCrypt::Engine.cost
-      #BCrypt::Password.create(string, cost: cost)
+      #cost = BCrypt::Engine::MIN_COST #https://stackoverflow.com/questions/30963360/undefined-method-min-cost-for-activemodelsecurepasswordmodule
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : 
+                                                    BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
     end
     # Returns a random token.
     def self.new_token
@@ -50,7 +50,7 @@ class User < ApplicationRecord
     def create_reset_digest
       self.reset_token = User.new_token 
       update_attribute(:reset_digest, User.digest(reset_token)) 
-      update_attribute(:reset_sent_at, Time.zone.now)
+      update_attribute(:reset_sent_at, Time.zone.now) 
       end
 
       def send_password_reset_email 
@@ -58,7 +58,7 @@ class User < ApplicationRecord
       end
 
       def password_reset_expired?
-        reset_sent_at<2.hours.ago
+        reset_sent_at < 2.hours.ago
       end
 
       private # Converts email to all lower-case.
